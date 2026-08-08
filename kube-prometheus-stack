@@ -1,0 +1,34 @@
+                    PROMETHEUS
+                        │
+        ┌───────────────┼─────────────────┐
+        │               │                 │
+     cAdvisor      Node Exporter    kube-state-metrics
+        │               │                 │
+  Container CPU      Node CPU          Pod status
+  Container RAM      Node RAM          Deployment
+  Network            Disk              Replica
+  Filesystem         Network           PVC
+  etc.                etc.             etc.
+        │               │                 │
+        └───────────────┼─────────────────┘
+                        ↓
+                Thousands of
+                  time series
+--------------------------------
+container_memory_working_set_bytes
++
+pod="app1"
+container="api"
+namespace="prod"
+node="worker1"
+=
+ONE TIME SERIES
+
+* if you chnges one lables  pod="app2"
+and you have another time series, and sample 
+-------
+**hpa works om usages of requests and promethus alerts works based on limits
+**if we want to store metrics we can use the pvc backed by ebs or somthing, if want to store long term use thonos backed by s3
+***
+servicemonitor:
+Prometheus needs to know that /metrics should be scraped.
