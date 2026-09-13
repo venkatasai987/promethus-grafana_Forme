@@ -1,0 +1,5 @@
+Metrics: Historical data of an event(  9am - 6pm) abnormal at 1pm then check logs at around 1pm
+logs: Info debug error trace
+traces: end to end flow of a request 
+-----------
+opentelemetry: Group of Api's  and sdk"s which will helpful for developer intsrument metrics,logs,tracess
