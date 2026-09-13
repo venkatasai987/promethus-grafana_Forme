@@ -1,20 +1,23 @@
                     PROMETHEUS
                         │
-        ┌───────────────┼─────────────────┐
-        │               │                 │
-     cAdvisor      Node Exporter    kube-state-metrics
-        │               │                 │
-  Container CPU      Node CPU          Pod status
-  Container RAM      Node RAM          Deployment
-  Network            Disk              Replica
-  Filesystem         Network           PVC
-  etc.                etc.             etc.
-        │               │                 │
-        └───────────────┼─────────────────┘
+                     (it usess different plugins for diffenret metrics like below) these plugins emit metrics at /metrics endpoit)
+        ┌───────────────┼────────────────-------------- ─┐---------------------------------------------------|
+        │               │                                │                                                   |
+     cAdvisor      Node Exporter(collects from/proc)    kube-state-metrics (from K8s API server)            app1,2,3( (using service discovery)
+         │              │(daemonset)                     │                                                   (we configure /metrics end point for apps)
+  Container CPU      Node CPU                     Pod status
+  Container RAM      Node RAM                     Deployment
+  Network            Disk                         Replica
+  Filesystem         Network                      PVC
+  etc.                etc.                        etc.  
+        │               │                 │                                                                         |
+        └───────────────┼─────────────────┘_________________________________________________________________________|
                         ↓
                 Thousands of
                   time series
 --------------------------------
+/metrics will get all the data of below metric we isolate them using label ex:namespace,serice etc)select any lebel filter them)
+ex:
 container_memory_working_set_bytes
 +
 pod="app1"
