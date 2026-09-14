@@ -3,8 +3,8 @@
                      (it usess different plugins for diffenret metrics like below) these plugins emit metrics at /metrics endpoit)
         ┌───────────────┼────────────────-------------- ─┐---------------------------------------------------|
         │               │                                │                                                   |
-     cAdvisor      Node Exporter(collects from/proc)    kube-state-metrics (from K8s API server)            app1,2,3( (using service discovery)
-         │              │(daemonset)                     │                                                   (we configure /metrics end point for apps)
+     cAdvisor      Node Exporter(collects from/proc)    kube-state-metrics (from K8s API server)           custom metrics app1,2,3( (using "service monitor", otherwise pm dont know sevice)
+         │              │(daemonset)                     │                                               intsrumentation = (we configure in code to which tool (ex:promclient) and what metrics(ex:hhtp requests)and wich metric type(ex:couter,histotogram) shoud we expose at /metrics end point for apps)
   Container CPU      Node CPU                     Pod status
   Container RAM      Node RAM                     Deployment
   Network            Disk                         Replica
@@ -34,4 +34,4 @@ and you have another time series, and sample
 **if we want to store metrics we can use the pvc backed by ebs or somthing, if want to store long term use thonos backed by s3
 ***
 servicemonitor:
-Prometheus needs to know that /metrics should be scraped.
+Prometheus needs to know that which sevice  /metrics should be scraped not all sevicess.
