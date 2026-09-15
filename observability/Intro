@@ -1,7 +1,7 @@
 Metrics: Historical data of an event(  9am - 6pm) ,suppose metrics are abnormal at 1pm then check logs at around 1pm
 logs: Info debug error trace
 traces: end to end flow of a request 
------------
+-----
 opentelemetry: Group of Api's  and sdk"s which will helpful for developer intsrument metrics,logs,tracess
 
 
@@ -10,4 +10,10 @@ grafana:rich dashboards,authentication and authorization(using iam like which te
 servicemonitor: Prometheus needs to know that which sevice  /metrics should be scraped not all sevicess.
 alertmanager: for trigering alerts
 
-
+---------------------------------------------------------------------------------
+logs:: These are messages written by developer To know what application is doing.
+*if you have 100's of apps then it is difficult find which apps causing trouble ,so we need centralized logging like EFK backed by Ebs
+*fluentbit-vendor neutral, logstsh-vendor lock(rich filterering)
+*
+---------------------------------------------------------------------
+tracess::These are instrumented by developer using tools like ex:opentelemetry 
