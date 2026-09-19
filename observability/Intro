@@ -13,7 +13,11 @@ alertmanager: for trigering alerts
 ---------------------------------------------------------------------------------
 logs:: These are messages written by developer To know what application is doing.
 *if you have 100's of apps then it is difficult find which apps causing trouble ,so we need centralized logging like EFK backed by Ebs
-*fluentbit-vendor neutral, logstsh-vendor lock(rich filterering)
+*fluentbit-vendor neutral, logstsh-vendor lock(rich filterering.
 *
 ---------------------------------------------------------------------
 tracess::These are instrumented by developer using tools like ex:opentelemetry 
+*it will show how the request is reaching the end point and how many spans and which span it is taking more latency.
+*we can integrate jager with the prometus for dashboad for p99 latency and etc..
+**we have integrate  any db like elasticsearch or casandra to store tracess.ex:provide elastic credentials and tls certs to jager for secure communication
+
