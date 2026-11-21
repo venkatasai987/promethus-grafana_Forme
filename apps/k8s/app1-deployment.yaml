@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-app1
+  namespace: monitoring-demo
+  labels:
+    app: counter-app1
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: counter-app1
+
+  template:
+    metadata:
+      labels:
+        app: counter-app1
+
+    spec:
+      containers:
+        - name: counter-app1
+          image: counter-app1:v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8000
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+            limits:
+              cpu: 500m
+              memory: 256Mi
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
