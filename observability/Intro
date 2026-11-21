@@ -21,3 +21,19 @@ tracess::These are instrumented by developer using tools like ex:opentelemetry
 *we can integrate jager with the prometus for dashboad for p99 latency and etc..
 **we have integrate  any db like elasticsearch or casandra to store tracess.ex:provide elastic credentials and tls certs to jager for secure communication
 
+---------------------------------------------
+ create dashboad for respose time per request & p50, p95, p99
+1.make chages in application code for histogram and all
+or
+1.Option A — Blackbox Exporter Option B — Ingress Controller   Option C — Service Mesh (Istio)
+Option A — Blackbox Exporter
+Easy for our Minikube project
+Probes your application endpoints externally and records probe latency, availability, HTTP status.
+
+Option B — Ingress Controller
+
+Measures requests passing through the ingress proxy. Better for real traffic latency distributions and request volume.
+
+Option C — Service Mesh (Istio)
+
+Provides service-level telemetry without modifying app code, including request duration, traffic, error rates, and latency distributions. More complex to install.
