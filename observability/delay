@@ -1,0 +1,4 @@
+1. Scrape & Evaluation Intervals (30s + 30s = up to 1m): Prometheus scrapes metrics every 30s and evaluates your PrometheusRule every 30s.
+2. Rule for: Duration (2m): In prometheus-rules.yaml, App1HighMemoryUsage has for: 2m (and NodeHighMemoryUsage has for: 5m). Prometheus will not send the alert to Alertmanager until the condition stays true for that entire window.
+3. Alertmanager group_wait (30s): Once Alertmanager receives the alert, it waits an additional 30s (group_wait: 30s in your Helm values) to batch similar alerts before sending the Slack message.
+4. Subsequent Alerts (group_interval: 5m): If an alert group already fired and a second pod in the same group triggers, Alertmanager waits 5m before sending the update.
