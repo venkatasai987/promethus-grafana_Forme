@@ -28,13 +28,13 @@ spec:
                 resource="memory",
                 unit="byte"
               }
-            ) * 100 > 90
+            ) * 100 > 20
           for: 2m
           labels:
             severity: critical
             application: app1
           annotations:
-            summary: App1 container memory usage is above 90%
+            summary: App1 container memory usage is above 20%
             description: "Pod {{ $labels.pod }} is using over 90% of its memory limit for 2 minutes."
 
         # App2 memory usage > 90% of container limit
@@ -53,13 +53,13 @@ spec:
                 resource="memory",
                 unit="byte"
               }
-            ) * 100 > 90
+            ) * 100 > 20
           for: 2m
           labels:
             severity: critical
             application: app2
           annotations:
-            summary: App2 container memory usage is above 90%
+            summary: App2 container memory usage is above 20%
             description: "Pod {{ $labels.pod }} is using over 90% of its memory limit for 2 minutes."
 
         # Pod restarting too frequently
@@ -85,13 +85,13 @@ spec:
               node_memory_MemAvailable_bytes
               /
               node_memory_MemTotal_bytes
-            ) * 100 > 85
+            ) * 100 > 60
           for: 5m
           labels:
             severity: warning
           annotations:
             summary: Node memory usage is high
-            description: "Node {{ $labels.instance }} memory usage is above 85%."
+            description: "Node {{ $labels.instance }} memory usage is above 60%."
 
         # Node root filesystem usage > 80%
         - alert: NodeDiskUsageHigh
