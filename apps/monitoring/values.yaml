@@ -118,6 +118,8 @@ grafana:
       label: grafana_dashboard
       labelValue: "1"
       searchNamespace: ALL
+      provider:
+       allowUiUpdates: true
 
     datasources:
       enabled: true
