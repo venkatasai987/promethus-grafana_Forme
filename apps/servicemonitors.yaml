@@ -1,0 +1,43 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: counter-app1-monitor
+  namespace: monitoring
+  labels:
+    release: monitoring
+
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring-demo
+
+  selector:
+    matchLabels:
+      app: counter-app1
+
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: counter-app2-monitor
+  namespace: monitoring
+  labels:
+    release: monitoring
+
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring-demo
+
+  selector:
+    matchLabels:
+      app: counter-app2
+
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
