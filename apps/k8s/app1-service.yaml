@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: counter-app1
+  namespace: monitoring-demo
+  labels:
+    app: counter-app1
+
+spec:
+  selector:
+    app: counter-app1
+
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+
+  type: ClusterIP
